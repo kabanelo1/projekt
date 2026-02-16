@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pivot Media | Main Index</title>
+  <meta name="description" content="Pivot Media helps simracing, esports, and motorsport teams grow on social media with data-led creative and strategy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/page-transition.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" aria-hidden="true"><div class="loader"></div></div>
+
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand nav-link" href="index.html">Pivot Media</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu" id="navMenu">
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="clients.html">Clients</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero__content">
+        <div class="hero__text">
+          <p class="eyebrow">Simracing - Esports - Motorsport</p>
+          <h1>We turn lap time into lifetime value for brands and race teams.</h1>
+          <p>
+            Pivot Media is the social-first growth partner trusted by teams that expect accountable delivery.
+            We build content engines, campaign ops, and reporting that keep your audience and partners engaged.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary nav-link" href="contact.html">Contact Us</a>
+            <a class="btn btn--secondary nav-link" href="clients.html">See our work</a>
+          </div>
+          <div class="hero__stats">
+            <article class="stat"><span class="stat__label">Social media views</span><strong>50M+</strong></article>
+            <article class="stat"><span class="stat__label">Projects delivered</span><strong>40+</strong></article>
+            <article class="stat"><span class="stat__label">Customer happiness</span><strong>98.9%</strong></article>
+            <article class="stat"><span class="stat__label">Hours saved</span><strong>10+</strong></article>
+          </div>
+        </div>
+        <div class="hero__media">
+          <figure class="hero__frame media-frame">
+            <img src="img/worked%20with/background.png" alt="Sim racing cockpit and creator setup" loading="lazy" onerror="this.style.display='none'" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell section--quick-links">
+      <h2>Explore the full site</h2>
+      <div class="cards cards--services">
+        <article class="card">
+          <h3>Services</h3>
+          <p>Website creation, social media management, and design systems.</p>
+          <a class="text-link nav-link" href="services.html">Go to Services</a>
+        </article>
+        <article class="card">
+          <h3>Clients</h3>
+          <p>Current and past teams where we delivered measurable growth.</p>
+          <a class="text-link nav-link" href="clients.html">Go to Clients</a>
+        </article>
+        <article class="card">
+          <h3>About</h3>
+          <p>How Pivot Media was built and what we promise partners.</p>
+          <a class="text-link nav-link" href="about.html">Go to About</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>(c) <span id="year"></span> Pivot Media. Built for pole position.</p>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById("year");
+    if (yearTarget) yearTarget.textContent = new Date().getFullYear();
+
+    const navRoot = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+      const setMenuState = (isOpen) => {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMenu.classList.toggle("is-open", isOpen);
+        if (navRoot) navRoot.classList.toggle("nav--open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
+      };
+
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        setMenuState(!expanded);
+      });
+
+      navMenu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) {
+          setMenuState(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          setMenuState(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pivot Media | Services</title>
+  <meta name="description" content="Pivot Media services for simracing and esports: websites, social media management, and graphics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/page-transition.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" aria-hidden="true"><div class="loader"></div></div>
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand nav-link" href="index.html">Pivot Media</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <div class="nav__menu" id="navMenu">
+        <a class="nav-link current" href="services.html" aria-current="page">Services</a>
+        <a class="nav-link" href="clients.html">Clients</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section shell">
+      <div class="section__head">
+        <p class="eyebrow">Core services</p>
+        <h1>Three ways we push sim racing teams past the algorithm.</h1>
+        <p>
+          Pivot Media builds digital infrastructure for race teams, leagues, and talent houses: conversion-ready websites,
+          always-on social media management, and standout visual design.
+        </p>
+      </div>
+      <div class="cards cards--services">
+        <article class="card">
+          <h2>Website creation</h2>
+          <p>Bespoke websites that spotlight your roster, sponsors, and merch with a pro factory-level presentation.</p>
+          <ul>
+            <li>Launch pages and campaign landing pages</li>
+            <li>CMS builds, hosting guidance, and SEO-ready architecture</li>
+            <li>Analytics instrumentation and CRM hooks</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Social media management</h2>
+          <p>Full-service channel operations with community management and long/short-form editing.</p>
+          <ul>
+            <li>Editorial calendars, copywriting, and engagement ops</li>
+            <li>Documentaries, highlight reels, and Shorts/Reels cuts</li>
+            <li>Performance dashboards for watch time, CPM, and growth</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Graphics design</h2>
+          <p>Sponsor-ready visuals, broadcast graphics, and merch lookbooks from sim racing native designers.</p>
+          <ul>
+            <li>Brand refreshes, overlays, and social carousels</li>
+            <li>Partner and investor deck design</li>
+            <li>Rapid iteration through shared brand libraries</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="media-grid">
+        <figure class="media-frame"><img src="img/worked%20with/Assetto%20Corsa%20Competizione%20Screenshot%202024.10.03%20-%2019.19.24.73.png" alt="Design and social content workflow" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <figure class="media-frame"><img src="img/worked%20with/Assetto%20Corsa%20Competizione%20Screenshot%202024.10.03%20-%2019.23.16.25.png" alt="Racing team website showcase" loading="lazy" onerror="this.style.display='none'" /></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>(c) <span id="year"></span> Pivot Media. Built for pole position.</p>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById("year");
+    if (yearTarget) yearTarget.textContent = new Date().getFullYear();
+    const navRoot = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+      const setMenuState = (isOpen) => {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMenu.classList.toggle("is-open", isOpen);
+        if (navRoot) navRoot.classList.toggle("nav--open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
+      };
+
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        setMenuState(!expanded);
+      });
+
+      navMenu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) {
+          setMenuState(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          setMenuState(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pivot Media | Contact</title>
+  <meta name="description" content="Contact Pivot Media by email, Discord, X, or Instagram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/page-transition.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" aria-hidden="true"><div class="loader"></div></div>
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand nav-link" href="index.html">Pivot Media</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <div class="nav__menu" id="navMenu">
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="clients.html">Clients</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link current" href="contact.html" aria-current="page">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section shell contact">
+      <div>
+        <div class="section__head">
+          <p class="eyebrow">Ready to plan?</p>
+          <h1>Reach us directly.</h1>
+          <p>Tell us about your next season, launch, or series. We respond within one business day.</p>
+        </div>
+        <article class="card">
+          <h2>Details</h2>
+          <ul>
+            <li>HQ: Remote-first, CET and EST coverage</li>
+            <li>Email: <a href="mailto:pivotmediacontact@gmail.com">pivotmediacontact@gmail.com</a></li>
+            <li>Discord: <a href="https://discord.com/invite/xjPF8bs8aJ" target="_blank" rel="noreferrer">Join our server</a></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="contact__form contact__links">
+        <figure class="media-frame"><img src="img/worked%20with/Assetto%20Corsa%20Competizione%20Screenshot%202024.10.03%20-%2023.11.52.08.png" alt="Contact Pivot Media" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <p><strong>Send a quick message:</strong></p>
+        <form class="contact-form" action="https://formsubmit.co/pivotmediacontact@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Pivot Media contact form message" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" />
+
+          <div class="form-row">
+            <label>
+              Full name
+              <input type="text" name="full_name" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Phone number
+              <input type="tel" name="phone" autocomplete="tel" />
+            </label>
+            <label>
+              Team / company
+              <input type="text" name="company" autocomplete="organization" />
+            </label>
+          </div>
+
+          <label>
+            Message
+            <textarea name="message" rows="6" placeholder="Tell us what you need help with..." required></textarea>
+          </label>
+
+          <button class="btn btn--primary" type="submit">Send Message</button>
+        </form>
+
+        <p><strong>Or pick another channel:</strong></p>
+        <a class="btn btn--primary" href="mailto:pivotmediacontact@gmail.com">Email Pivot Media</a>
+        <a class="btn btn--secondary" href="https://discord.com/invite/xjPF8bs8aJ" target="_blank" rel="noreferrer">Message on Discord</a>
+        <a class="btn btn--ghost" href="https://x.com/PivotMediaGG?t=a0XHuSI6rZV-dBiQiJXCng&s=09" target="_blank" rel="noreferrer">DM on X (Twitter)</a>
+        <a class="btn btn--ghost" href="https://www.instagram.com/pivotmedia.gg?igsh=MWdtZTFnNms3MG41cw==" target="_blank" rel="noreferrer">DM on Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>(c) <span id="year"></span> Pivot Media. Built for pole position.</p>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById("year");
+    if (yearTarget) yearTarget.textContent = new Date().getFullYear();
+    const navRoot = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+      const setMenuState = (isOpen) => {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMenu.classList.toggle("is-open", isOpen);
+        if (navRoot) navRoot.classList.toggle("nav--open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
+      };
+
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        setMenuState(!expanded);
+      });
+
+      navMenu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) {
+          setMenuState(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          setMenuState(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

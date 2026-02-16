@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pivot Media | About</title>
+  <meta name="description" content="About Pivot Media: simracing marketing agency focused on social growth, design, and media operations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/page-transition.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" aria-hidden="true"><div class="loader"></div></div>
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand nav-link" href="index.html">Pivot Media</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <div class="nav__menu" id="navMenu">
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="clients.html">Clients</a>
+        <a class="nav-link current" href="about.html" aria-current="page">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section shell about">
+      <div class="section__head">
+        <p class="eyebrow">Who we are</p>
+        <h1>About Pivot Media</h1>
+        <p>
+          Pivot Media is the premier marketing agency in the sim racing scene. With two-plus years of
+          obsessing over data-led creativity, we have brought millions of views to teams that want their
+          social presence to match their pace on track.
+        </p>
+      </div>
+
+      <div class="about__grid">
+        <article class="card">
+          <h2>Our story</h2>
+          <p>
+            We launched in May 2024 after seeing how many sim racing teams underestimated social media as a
+            long-term growth driver. We built an elite collective of managers, editors, and designers from esports.
+          </p>
+          <figure class="media-frame"><img src="img/worked%20with/Assetto%20Corsa%20Competizione%20Screenshot%202024.10.03%20-%2019.24.09.99.png" alt="Pivot Media team behind the scenes" loading="lazy" onerror="this.style.display='none'" /></figure>
+        </article>
+        <article class="card">
+          <h2>What we lead</h2>
+          <p>
+            Today we deliver video editing, social media management, and design systems for teams, leagues, and creators.
+          </p>
+          <ul>
+            <li>Cross-platform content engines for elite teams</li>
+            <li>Design systems and branding for sponsors and talent</li>
+            <li>Community growth loops across Discord and social channels</li>
+          </ul>
+          <figure class="media-frame"><img src="img/worked%20with/Assetto%20Corsa%20Competizione%20Screenshot%202024.10.03%20-%2019.40.14.75.png" alt="Creative workflow and content planning" loading="lazy" onerror="this.style.display='none'" /></figure>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>(c) <span id="year"></span> Pivot Media. Built for pole position.</p>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById("year");
+    if (yearTarget) yearTarget.textContent = new Date().getFullYear();
+    const navRoot = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+      const setMenuState = (isOpen) => {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMenu.classList.toggle("is-open", isOpen);
+        if (navRoot) navRoot.classList.toggle("nav--open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
+      };
+
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        setMenuState(!expanded);
+      });
+
+      navMenu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) {
+          setMenuState(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          setMenuState(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

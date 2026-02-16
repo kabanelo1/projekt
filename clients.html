@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pivot Media | Clients</title>
+  <meta name="description" content="Current and past Pivot Media clients across simracing and esports." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/page-transition.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" aria-hidden="true"><div class="loader"></div></div>
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand nav-link" href="index.html">Pivot Media</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <div class="nav__menu" id="navMenu">
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link current" href="clients.html" aria-current="page">Clients</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section shell cases">
+      <div class="section__head">
+        <p class="eyebrow">Current / Past clients</p>
+        <h1>Who we are shipping wins with right now.</h1>
+      </div>
+      <div class="cards cards--services">
+        <article class="card">
+          <p class="case__date">May 2025 - Present</p>
+          <h2>Light Speed Racing</h2>
+          <p>Ongoing creative partner sharpening their brand look and keeping race-week content polished.</p>
+          <ul>
+            <li>Aesthetic trailers, posters, and thumbnails for YouTube</li>
+            <li>10-minute highlight reels for each race weekend</li>
+            <li>Coordinated marketing comms for timed announcements</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="case__date">September 2025 - Present</p>
+          <h2>Reason Gaming</h2>
+          <p>Full graphic overhaul and channel operations across FPS rosters during the Reason2Play era.</p>
+          <ul>
+            <li>New social templates and stream overlays</li>
+            <li>1M impressions in first three months of relaunch</li>
+            <li>Social management across multiple LAN events</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="case__date">August 2024 - April 2025</p>
+          <h2>Formula God</h2>
+          <p>Social ghostwriting and growth engine for one of the F1 community's loudest voices.</p>
+          <ul>
+            <li>10M+ impressions and monetization unlocked in two months</li>
+            <li>High-engagement Twitter/X threads between seasons</li>
+            <li>Daily interactions to maintain velocity and reach</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="media-grid media-grid--logos">
+        <figure class="media-frame media-frame--logo"><img src="img/worked%20with/800x800.png" alt="Client logo 1" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <figure class="media-frame media-frame--logo"><img src="img/worked%20with/CES-logo-Purple-white.gif" alt="Client logo 2" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <figure class="media-frame media-frame--logo"><img src="img/worked%20with/CSS_PNG.png" alt="Client logo 3" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <figure class="media-frame media-frame--logo"><img src="img/worked%20with/DriveLine_Media_Logo.png" alt="Client logo 4" loading="lazy" onerror="this.style.display='none'" /></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>(c) <span id="year"></span> Pivot Media. Built for pole position.</p>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById("year");
+    if (yearTarget) yearTarget.textContent = new Date().getFullYear();
+    const navRoot = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+      const setMenuState = (isOpen) => {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMenu.classList.toggle("is-open", isOpen);
+        if (navRoot) navRoot.classList.toggle("nav--open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
+      };
+
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        setMenuState(!expanded);
+      });
+
+      navMenu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) {
+          setMenuState(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          setMenuState(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
